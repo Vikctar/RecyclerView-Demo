@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private List<Movie> movieList = new ArrayList<>();
-    private RecyclerView recyclerView;
     private MoviesAdapter moviesAdapter;
 
     @Override
@@ -20,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         moviesAdapter = new MoviesAdapter(movieList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
